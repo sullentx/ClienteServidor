@@ -31,28 +31,3 @@ func (handle *PostProductsHandler) Handle(g *gin.Context) {
 	}
 	g.JSON(http.StatusCreated, gin.H{"Message": "Product Creado"})
 }
-
-/*
-func (handle *PostProductsHandler) LongPollNewProducts(g *gin.Context) {
-	lastProductID, err := strconv.Atoi(g.Query("lastProductID"))
-	if err != nil {
-		lastProductID = 0
-	}
-
-	for {
-		products, latestID, err := handle.getNewProductsUseCase.Execute(lastProductID)
-		if err != nil {
-			g.JSON(http.StatusInternalServerError, gin.H{"Error": err.Error()})
-			return
-		}
-
-		if len(products) > 0 {
-			g.JSON(http.StatusOK, gin.H{"products": products, "lastProductID": latestID})
-			return
-		}
-
-		time.Sleep(2 * time.Second) // Espera antes de volver a checar
-	}
-}
-
-*/
