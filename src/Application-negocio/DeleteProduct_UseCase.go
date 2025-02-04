@@ -1,6 +1,8 @@
 package applicationnegocio
 
-import domainnegocio "tienda/src/Products/Domain-negocio"
+import (
+	domainnegocio "main/src/Domain-negocio"
+)
 
 type DeleteProductUseCase struct {
 	repo domainnegocio.IproductrRepositoy

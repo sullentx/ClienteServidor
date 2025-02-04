@@ -1,8 +1,8 @@
 package applicationnegocio
 
 import (
-	domainnegocio "tienda/src/Products/Domain-negocio"
-	"tienda/src/Products/Domain-negocio/entities"
+	domainnegocio "main/src/Domain-negocio"
+	entities "main/src/Domain-negocio/Entities"
 )
 
 type GetOneProductUseCase struct {
