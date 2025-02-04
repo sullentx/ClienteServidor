@@ -22,5 +22,5 @@ func (handle *GetProductsHandler) Handle(g *gin.Context) {
 		g.JSON(http.StatusInternalServerError, gin.H{"Message": err.Error()})
 		return
 	}
-	g.JSON(http.StatusOK, gin.H{"Lista de productos": products})
+	g.JSON(http.StatusOK, products)
 }

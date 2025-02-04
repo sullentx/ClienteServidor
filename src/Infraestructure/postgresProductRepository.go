@@ -17,12 +17,12 @@ func NewPostgresProductRepository(db *sql.DB) *PostgresProductRepository {
 }
 
 func (r *PostgresProductRepository) Save(product entities.Product) error {
-	_, err := r.db.Exec("INSERT INTO products (name,quantity,codigo_barras) VALUES ($1, $2, $3)", product.Name, product.Quantity, product.CodigoBarras)
+	_, err := r.db.Exec("INSERT INTO product (name,quantity,codigobarras) VALUES ($1, $2, $3)", product.Name, product.Quantity, product.CodigoBarras)
 	return err
 }
 
 func (r *PostgresProductRepository) GetAll() ([]entities.Product, error) {
-	rows, err := r.db.Query("SELECT id, name, quantity, codigo_barras FROM products")
+	rows, err := r.db.Query("SELECT id, name, quantity, codigobarras FROM product")
 	if err != nil {
 		return nil, err
 	}
@@ -40,7 +40,7 @@ func (r *PostgresProductRepository) GetAll() ([]entities.Product, error) {
 }
 
 func (r *PostgresProductRepository) GetOne(id int) (entities.Product, error) {
-	row := r.db.QueryRow("SELECT id,name, price, quantity FROM products WHERE id = $1", id)
+	row := r.db.QueryRow("SELECT id,name, price, quantity FROM product WHERE id = $1", id)
 	var product entities.Product
 	if err := row.Scan(&product.ID, &product.Name, &product.Quantity, &product.CodigoBarras); err != nil {
 		return entities.Product{}, err
@@ -65,7 +65,7 @@ func (r *PostgresProductRepository) Delete(id int) error {
 }
 
 func (r *PostgresProductRepository) Put(id int, product entities.Product) error {
-	result, err := r.db.Exec("UPDATE products SET name = $1 , quantity = $2, codigo_barras = $3 WHERE id = $4", product.Name, product.Quantity, product.CodigoBarras, id)
+	result, err := r.db.Exec("UPDATE product SET name = $1 , quantity = $2, codigobarras = $3 WHERE id = $4", product.Name, product.Quantity, product.CodigoBarras, id)
 	if err != nil {
 		return err
 	}
