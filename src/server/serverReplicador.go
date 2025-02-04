@@ -42,15 +42,14 @@ func (r *Replicator) replicate() {
 
 	// 🔍 Imprime la respuesta antes de intentar decodificarla
 	body, _ := io.ReadAll(resp.Body)
-	fmt.Println("📥 Respuesta del servidor principal:", string(body))
+	fmt.Println("Respuesta del servidor principal:", string(body))
 
 	var products []entities.Product
 	if err := json.Unmarshal(body, &products); err != nil {
-		fmt.Println("❌ Error al decodificar JSON:", err)
+		fmt.Println("Error al decodificar JSON:", err)
 		return
 	}
 
-	fmt.Printf("🔄 Productos recibidos en el replicador: %v\n", products)
-}
+	fmt.Printf("Productos recibidos en el replicador: %v\n", products)
 
-// Continuar replicación...
+}
