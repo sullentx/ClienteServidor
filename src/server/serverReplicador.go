@@ -40,7 +40,7 @@ func (r *Replicator) replicate() {
 	}
 	defer resp.Body.Close()
 
-	// 🔍 Imprime la respuesta antes de intentar decodificarla
+
 	body, _ := io.ReadAll(resp.Body)
 	fmt.Println("Respuesta del servidor principal:", string(body))
 
