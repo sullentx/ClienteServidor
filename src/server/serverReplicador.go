@@ -35,7 +35,7 @@ func (r *Replicator) Start() {
 func (r *Replicator) replicate() {
 	resp, err := http.Get(r.primaryServerURL + "/products")
 	if err != nil {
-		fmt.Println("❌ Error al hacer GET a /products:", err)
+		fmt.Println("Error al hacer GET a /products:", err)
 		return
 	}
 	defer resp.Body.Close()
